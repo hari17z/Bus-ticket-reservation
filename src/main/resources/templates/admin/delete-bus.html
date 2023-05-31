@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Bus</title>
+</head>
+<body>
+    <h1>Delete Bus</h1>
+    <p>Are you sure you want to delete this bus?</p>
+    <form th:action="@{/admin/buses/delete/{busId}}" th:method="post" th:object="${bus}">
+        <input type="hidden" th:field="*{busId}" />
+        <button type="submit">Delete Bus</button>
+    </form>
+</body>
+</html>

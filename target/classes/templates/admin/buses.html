@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buses</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+ <h2>Buses</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Bus ID</th>
+                <th>Bus Name</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Total Seats</th>
+                <th>Available Seats</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="bus : ${buses}">
+                <td th:text="${bus.busId}"></td>
+                <td th:text="${bus.busName}"></td>
+                <td th:text="${bus.type}"></td>
+                <td th:text="${bus.date}"></td>
+                <td th:text="${bus.totalSeats}"></td>
+                <td th:text="${bus.availableSeats}"></td>
+                <td>
+                    <a th:href="@{/admin/buses/edit/{id}(id=${bus.busId})}" class="btn btn-secondary">Edit</a> |
+                    <a th:href="@{/admin/buses/delete/{id}(id=${bus.busId})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <a th:href="@{/admin/buses/add}" class="btn btn-primary">Add Bus</a>
+
+</div>
+   
+</body>
+</html>

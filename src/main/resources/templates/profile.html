@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container">
+    <h2>User Profile</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">User Information</h5>
+            <p class="card-text">First Name: <span th:text="${user.firstname}"></span></p>
+            <p class="card-text">Last Name: <span th:text="${user.lastname}"></span></p>
+            <p class="card-text">Email: <span th:text="${user.email}"></span></p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

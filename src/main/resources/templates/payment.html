@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Payment</title>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container">
+    <h2>Payment</h2>
+
+    <form action="/process-payment" method="post">
+        <div class="form-group">
+            <label for="cardRadio">Card</label>
+            <input type="radio" id="cardRadio" name="paymentType" value="card" checked>
+        </div>
+
+        <div class="form-group">
+            <label for="upiRadio">UPI</label>
+            <input type="radio" id="upiRadio" name="paymentType" value="upi">
+        </div>
+
+        <div class="form-group" id="cardNumberGroup">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" class="form-control" id="cardNumber" name="cardNumber" maxlength="16">
+        </div>
+
+        <div class="form-group" id="upiIdGroup" style="display: none;">
+            <label for="upiId">UPI ID:</label>
+            <input type="text" class="form-control" id="upiId" name="upiId">
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="hidden" id="bookid" name="bookid" th:value="${booking.bookingId}" >
+            <input type="text" class="form-control" id="amount" name="amount" th:value="${booking.price}" readonly>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Pay</button>
+    </form>
+</div>
+
+<script>
+    var cardRadio = document.getElementById("cardRadio");
+    var upiRadio = document.getElementById("upiRadio");
+    var cardNumberGroup = document.getElementById("cardNumberGroup");
+    var upiIdGroup = document.getElementById("upiIdGroup");
+
+    cardRadio.addEventListener("change", function() {
+        cardNumberGroup.style.display = "block";
+        upiIdGroup.style.display = "none";
+    });
+
+    upiRadio.addEventListener("change", function() {
+        cardNumberGroup.style.display = "none";
+        upiIdGroup.style.display = "block";
+    });
+</script>
+
+</body>
+</html>

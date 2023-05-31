@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Bus Reservation System</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+</head>
+<body>
+	<!-- Include header -->
+<div th:insert="~{fragments/header :: header}"></div>
+
+	<div class="container">
+		<h1>Welcome to the Bus Reservation System</h1>
+		<a th:href="@{/bus}" class="btn btn-primary">Search Buses</a>
+	</div>
+
+	
+
+	<!-- JavaScript files -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Bus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Bus</h2>
+    <form method="post" th:action="@{/admin/buses/save}" class="needs-validation" novalidate>
+        <label for="busName">Bus Name:</label>
+        <input type="text" class="form-control" id="busName" name="busName" required="required"/>
+        <br/><br/>
+        <label for="type">Type:</label>
+        <input type="text" class="form-control" id="type" name="type" required="required"/>
+        <br/><br/>
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" id="date" name="date" required="required"/>
+        <br/><br/>
+        <label for="soruce">Source:</label>
+        <input type="text" class="form-control" id="source" name="source" required="required"/>
+        <br/><br/>
+        <label for="destination">Destination:</label>
+        <input type="text" class="form-control" id="destination" name="destination" required="required"/>
+        <br/><br/>
+        <label for="totalSeats">Total Seats:</label>
+        <input type="number" class="form-control" id="totalSeats" name="totalSeats" required="required"/>
+        <br/><br/>
+        <label for="availableSeats">Available Seats:</label>
+        <input type="number" class="form-control" id="availableSeats" name="availableSeats" required="required"/>
+        <br/><br/>
+        <label for="price">Price:</label>
+        <input type="number" class="form-control" id="price" name="price" required="required"/>
+        <br/><br/>
+        <button type="submit" class="btn btn-primary" >Add Bus</button>
+    </form>
+    <br/>
+    <a th:href="@{/admin/buses}" class="btn btn-primary" >Back to Buses</a>
+
+</div>
+
+
+</body>
+</html>

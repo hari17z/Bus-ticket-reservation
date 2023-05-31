@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <title>Booking</title>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div>
+    <h1>Bus Booking</h1>
+    <div class="container">
+        <h2>Bus Details</h2>
+        <p><strong>Bus Name:</strong> <span th:text="${bus.busName}"></span></p>
+        <p><strong>Type:</strong> <span th:text="${bus.type}"></span></p>
+        <p><strong>Source:</strong> <span th:text="${bus.source}"></span></p>
+        <p><strong>Destination:</strong> <span th:text="${bus.destination}"></span></p>
+        <p><strong>Date:</strong> <span th:text="${bus.date}"></span></p>
+        <p><strong>Price:</strong> <span th:text="${bus.price}"></span></p>
+    </div>
+    <div>
+        <h2>Booking Details</h2>
+        <form action="#" th:action="@{/bookings}" th:object="${booking}" method="post">
+            <input type="hidden" name="busId" th:value="${bus.busId}" />
+            <input type="hidden" name="date" th:value="${bus.date}" />
+            <input type="hidden" name="userId" value="${user.id}" />
+            <input type="hidden" name="price" th:value="${bus.price}" />
+            <p><label for="numTickets">Number of Tickets:</label> <input type="number" class="form-control" id="numTickets" name="numTickets" min="1" max="${bus.availableSeats}" required /></p>
+            <p><strong>Total Price:</strong> <span id="totalPrice" th:text="${bus.price}"></span></p>
+            <!-- Add a hidden input field for total price -->
+            <input type="hidden" name="totalPrice" th:value="${bus.price}" />
+            <p><button type="submit" class="btn btn-primary">Confirm Booking</button></p>
+        </form>
+    </div>
+</div>
+<div th:if="${message}" class="alert alert-success">
+    <p th:text="${message}"></p>
+</div>
+
+<script>
+    // Calculate total price based on number of tickets
+    const numTicketsInput = document.querySelector("#numTickets");
+    const totalPriceSpan = document.querySelector("#totalPrice");
+    numTicketsInput.addEventListener("input", () => {
+        const numTickets = parseInt(numTicketsInput.value);
+        const pricePerTicket = parseFloat(totalPriceSpan.innerText);
+        const totalPrice = numTickets * pricePerTicket;
+        totalPriceSpan.innerText = totalPrice.toFixed(2);
+        // Set the total price in the hidden input field
+        const totalPriceInput = document.querySelector("input[name='totalPrice']");
+        totalPriceInput.value = totalPrice.toFixed(2);
+    });
+</script>
+</body>
+</html>
