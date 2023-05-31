@@ -1,2 +1,2 @@
 # Bus-ticket-reservation
-Bus ticket reservation system using spring boot
+This is a sample Bus ticket reservation system project using spring boot
